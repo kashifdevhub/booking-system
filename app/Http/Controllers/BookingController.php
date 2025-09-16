@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendBookingEmailJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -73,6 +74,7 @@ class BookingController extends Controller
                 'total_amount' => $totalInCurrency,
                 'status' => 'confirmed',
             ]);
+            SendBookingEmailJob::dispatch($booking);
 
             // Pricing breakdowns
             foreach ($items as $it) {
@@ -102,7 +104,7 @@ class BookingController extends Controller
             session()->forget('cart.items');
 
             return redirect()->route('bookings.show', $booking->id)
-                ->with('success', 'Booking created. Reference: ' . $booking->booking_code);
+                ->with('success', 'Booking created and email job queued. Reference: ' . $booking->booking_code);
         } catch (\Throwable $e) {
             DB::rollBack();
             \Log::error('Booking creation failed', ['error' => $e->getMessage()]);
