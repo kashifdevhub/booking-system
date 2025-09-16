@@ -11,9 +11,9 @@ use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Storage;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout');
     Route::post('/checkout', [BookingController::class, 'processCheckout'])->name('checkout.process');
     Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
+
+     Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('bookings.customer');
 });
 
 

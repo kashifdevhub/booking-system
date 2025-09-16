@@ -129,41 +129,4 @@ class SearchController extends Controller
     }
 
 
-    public function checkout()
-    {
-        $items = session('cart.items', []);
-        $subtotal = collect($items)->sum('price');
-
-        if (empty($items)) {
-            return redirect()->route('cart.show')->with('error', 'Cart is empty. Add items before checkout.');
-        }
-
-        return view('cart.checkout', compact('items', 'subtotal'));
-    }
-
-    public function processCheckout(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'phone' => 'required|string|max:20',
-            'address' => 'required|string|max:500',
-        ]);
-
-        $items = session('cart.items', []);
-        $subtotal = collect($items)->sum('price');
-
-        if (empty($items)) {
-            return redirect()->route('cart.show')->with('error', 'Cart is empty.');
-        }
-
-        // 🚀 In real app, save booking to DB here
-        // Example:
-        // Booking::create([...]);
-
-        // Clear cart
-        session()->forget('cart.items');
-
-        return redirect()->route('dashboard')->with('success', 'Booking confirmed! Total amount ₹' . number_format($subtotal));
-    }
 }

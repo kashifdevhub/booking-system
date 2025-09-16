@@ -39,7 +39,7 @@ class AdminController extends Controller
     {
         $bookings = Booking::with(['pricingBreakdowns', 'passengers'])
             ->latest()
-            ->take(5)   // only last 5
+            ->take(5)   // last 5
             ->get();
 
         return view('admin.bookings.index', compact('bookings'));

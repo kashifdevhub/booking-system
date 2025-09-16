@@ -10,6 +10,7 @@ use App\Models\Booking;
 use App\Models\PricingBreakdown;
 use App\Models\PassengerOrGuest;
 use App\Models\Currency;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -120,5 +121,23 @@ class BookingController extends Controller
         }
         $booking->load(['pricingBreakdowns', 'passengers']);
         return view('bookings.show', compact('booking'));
+    }
+
+
+
+
+
+    public function myBookings()
+    {
+        $user = Auth::user();
+
+        // eager-load relations (use the relation names from your Booking model)
+
+        $bookings = Booking::with(['passengers', 'customer'])
+            ->where('customer_id', $user->id)
+            ->latest()
+            ->get();
+        // dd($bookings);
+        return view('bookings.index', compact('bookings'));
     }
 }
