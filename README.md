@@ -59,7 +59,7 @@ php artisan serve
 
 
 ## 🌱 Database Seeder
-This project includes seeders to create default users:
+This project includes seeders to create default Customer And Admin:
 
 - **Admin** → Email: `admin@admin.com`, Password: `admin@123`  
 - **Customer** → Email: `customer@test.com`, Password: `customer@123`
