@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==== Custom CSS ==== */
+.btn-flight {
+    background-color: brown;
+    /* brown background */
+    color: #fff;
+    /* white text */
+    font-weight: bold;
+    font-size: 18px;
+    padding: 14px 40px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+.btn-flight:hover {
+    background-color: #5a2d0c;
+    /* dark brown on hover */
+}
+
+.btn-hotel {
+    background-color: brown;
+    /* brown background */
+    color: #fff;
+    /* white text */
+    font-weight: bold;
+    font-size: 18px;
+    padding: 14px 40px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
