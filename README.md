@@ -43,7 +43,7 @@ composer install
 
 # Install frontend dependencies and build UI
 npm install
-npm run dev
+npm run dev       # ⚠️ NOTE: Run this to ensure UI loads correctly
 
 # Copy environment file and configure database
 cp .env.example .env
