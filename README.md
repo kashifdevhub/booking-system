@@ -69,7 +69,20 @@ Run the following command after migrations:
 ```bash
 php artisan db:seed --class=UserAndRoleSeeder
 
+## 📮 Queue Job: SendBookingEmailJob
+This project includes a queued job named **SendBookingEmailJob**.  
+Instead of sending real emails, the job writes a **fake email log** entry inside:
 
+### How to run the job
+By default, jobs are dispatched to the queue and will not run until a queue worker is started.  
+
+1. Make sure queue is set to `database` in `.env`:
+2. Create queue tables and migrate:
+```bash
+php artisan queue:table
+php artisan migrate
+3. Start the queue worker:
+php artisan queue:work
 Requirements
 
 PHP 8.1+
