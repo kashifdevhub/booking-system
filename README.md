@@ -56,3 +56,27 @@ php artisan migrate
 
 # Start local development server
 php artisan serve
+
+Requirements
+
+PHP 8.1+
+
+Composer
+
+MySQL 
+
+Node.js & NPM
+
+Laravel 12
+
+
+Roles
+
+Customer → Can create bookings and view confirmation page.
+
+Admin → Can view total bookings, hotel vs flight stats, revenue, and latest bookings in the dashboard.
+
+
+Author
+
+Md Kashif (@kashifdevhub)
