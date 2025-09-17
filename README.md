@@ -22,7 +22,7 @@ The system has two roles: **Customer** (to make bookings) and **Admin** (to view
 ---
 
 ## 🚀 Features
-- Laravel 10+ project with clean architecture  
+- Laravel 12 project with clean architecture  
 - Hotel and flight booking management  
 - Customer and passenger details  
 - Pricing breakdowns for each booking  
