@@ -40,15 +40,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart', [SearchController::class, 'showCart'])->name('cart.show');
     Route::post('/cart/remove', [SearchController::class, 'removeFromCart'])->name('cart.remove');
     Route::post('/cart/clear', [SearchController::class, 'clearCart'])->name('cart.clear');
-    // checkout
+
     Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout');
     Route::post('/checkout', [BookingController::class, 'processCheckout'])->name('checkout.process');
     Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
 
     Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('bookings.customer');
 });
-
-
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');

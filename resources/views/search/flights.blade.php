@@ -4,7 +4,6 @@
         <x-flash />
         <h2 class="text-2xl font-semibold mb-4">Search Flights</h2>
 
-
         <form method="GET" action="{{ route('search.flights') }}" class="bg-white p-4 rounded-lg shadow mb-6">
             <div class="grid grid-cols-1 md:grid-cols-8 gap-3 items-end">
                 <div class="md:col-span-2">

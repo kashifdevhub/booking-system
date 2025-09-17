@@ -1,5 +1,5 @@
 <x-app-layout>
-     @section('title','Hotel')
+    @section('title', 'Hotel')
     <div class="max-w-6xl mx-auto px-4 py-8">
         <x-flash />
         <h2 class="text-2xl font-semibold mb-4">Search Hotels</h2>
@@ -33,10 +33,12 @@
                         <option value="price_desc" @selected(request('sort') === 'price_desc')>Price: High → Low</option>
                     </select>
                 </div>
-            </div>
 
-            <div class="mt-3 text-sm text-gray-500">
-                <em>Note:</em> Hotel JSON does not contain availability ranges. Results are filtered by city only.
+                <div class="md:col-span-1">
+                    <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        Search
+                    </button>
+                </div>
             </div>
         </form>
 
