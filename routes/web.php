@@ -23,10 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-
-Route::middleware(['auth'])->group(function () {
     // Flights search
     Route::get('/search/flights', [SearchController::class, 'flights'])->name('search.flights');
 
@@ -38,27 +35,23 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/flights/{id}', [SearchController::class, 'flightDetails'])->name('flights.details');
     Route::get('/hotels/{id}', [SearchController::class, 'hotelDetails'])->name('hotels.details');
 
-    // Cart
-    Route::post('/cart/add', [SearchController::class, 'addToCart'])->name('cart.add');
-    Route::get('/cart', [SearchController::class, 'showCart'])->name('cart.show');
-
-
     // Cart routes
     Route::post('/cart/add', [SearchController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [SearchController::class, 'showCart'])->name('cart.show');
     Route::post('/cart/remove', [SearchController::class, 'removeFromCart'])->name('cart.remove');
     Route::post('/cart/clear', [SearchController::class, 'clearCart'])->name('cart.clear');
-
+    // checkout
     Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout');
     Route::post('/checkout', [BookingController::class, 'processCheckout'])->name('checkout.process');
     Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
 
-     Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('bookings.customer');
+    Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('bookings.customer');
 });
+
 
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/bookings',[AdminController::class,'bookings'])->name('bookings');
+    Route::get('/bookings', [AdminController::class, 'bookings'])->name('bookings');
 });
 require __DIR__ . '/auth.php';
